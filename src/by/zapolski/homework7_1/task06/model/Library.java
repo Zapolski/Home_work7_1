@@ -32,16 +32,13 @@ public class Library {
                 //дата требуемой сдачи
                 LocalDate expectedDate = register[i].date.plusDays(register[i].countDays);
                 for (int j = i; j < register.length - 1; j++) {//бежим по журналу для поиска возврата
-                    //если нашлик хоть какой-нибудь возврат
+                    //если нашли хоть какой-нибудь возврат
                     if ((register[j] != null) && (register[j].operation == TypeOperation.INPUT)) {
                         //нашли возврат этой книги этим студентом
                         if ((register[i].book == register[j].book) && (register[i].student == register[j].student)) {
                             //смотрим корректен ли возврат
                             if (!register[j].date.isBefore(expectedDate)) isDebtor = true;
                             isInput = true;
-                            /*System.out.println("Дата выадчи: " + register[i].date + "; ожидаемая дата: "
-                                    + expectedDate + "; дата возврата: " + register[j].date);*/
-                            //выходим из цикла
                             break;
                         }
                     }
@@ -49,10 +46,10 @@ public class Library {
 
                 //если книгу не вернули
                 if (!isInput){
-                    if (!LocalDate.now().isBefore(expectedDate))//проверяем не истеклоли время
+                    if (!LocalDate.now().isBefore(expectedDate))//проверяем не истекло ли время
                         System.out.println("Студент " + register[i].student + " уже просрочил сдачу " + register[i].book);
                 }else{
-                    if (isDebtor)//книгу это должник
+                    if (isDebtor)//проверяем должник ли это
                         System.out.println("Студент " + register[i].student + " не вовремя сдал книгу " + register[i].book);
                 }
 

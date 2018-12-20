@@ -7,13 +7,10 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-
-        //System.out.println("Список студентов: ");
         //создали массив студентов и заполнили его
         Student[] students = new Student[5];
         for (int i = 0; i < students.length; i++) {
             students[i] = new Student("Name"+i,"Surname"+i,i+50);
-            //System.out.println(students[i]);
         }
 
         //создали библиотеку
@@ -23,15 +20,11 @@ public class Main {
         for (int i = 0; i < library.books.length; i++) {
             library.books[i]=new Book("Title"+i,"Author"+i);
         }
-        /*System.out.println("Список книг в библиотеке: ");
-        library.printBooks();*/
 
         //заполнили читательские билеты
         for (int i = 0; i < students.length; i++) {
             library.cards[i] = new LibraryCard(i,students[i]);
         }
-        /*System.out.println("Список читательских билетов: ");
-        library.printCards();*/
 
         library.register[0] = new LibraryRecord(TypeOperation.OUTPUT,library.books[0],students[0],
                 LocalDate.of(2018,1,1),5);
@@ -45,8 +38,6 @@ public class Main {
 
         library.register[4] = new LibraryRecord(TypeOperation.OUTPUT,library.books[3],students[3],
                 LocalDate.of(2018,12,10),20);
-
-
 
         System.out.println("Журнал библиотеки: ");
         library.printRegister();
