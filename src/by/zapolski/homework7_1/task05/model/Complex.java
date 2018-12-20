@@ -11,6 +11,6 @@ public class Complex {
 
     @Override
     public String toString() {
-        return "Complex: " + a + "+" + b + "i";
+        return "Complex: " + a + (b>=0?"+":"") + b + "i";
     }
 }
